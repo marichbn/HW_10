@@ -1,0 +1,22 @@
+    1  git clone --branch main ./seed.bundle HW_10
+    2  cd HW_10
+    3  New-Item -ItemType File text_ignore.txt
+    4  Add-Content .gitignore text_ignore.txt
+    5  git status
+    6  git check-ignore text_ignore.txt
+    7  git add .
+    8  git commit -m "Ignore local test file"
+    9  New-Item -ItemType File main_test.txt
+   10  git add .
+   11  git commit -m "Add main test file"
+   12  git checkout -b develop
+   13  New-Item -ItemType File develop_test.txt
+   14  git add .
+   15  git commit -m "Add develop test file"
+   16  Set-Content develop_test.txt "just a small change"
+   17  git status
+   18  git add .
+   19  git commit -m "Update develop test file"
+   20  git checkout main
+   21  git merge --no-ff --no-edit develop
+   22  git log --oneline --graph --all
